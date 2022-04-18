@@ -66,10 +66,10 @@ describe('query', () => {
         metadata: 'metadata'
       }
 
-      const result = queryHandler(json)
+      const result = queryHandler(json, { outStatistics: ['stats'] })
       result.should.equal('precalculated-statistics')
       renderPrecalculatedStatisticsResponseSpy.callCount.should.equal(1)
-      renderPrecalculatedStatisticsResponseSpy.firstCall.args.should.deepEqual([json])
+      renderPrecalculatedStatisticsResponseSpy.firstCall.args.should.deepEqual([json, { outStatistics: ['stats'] }])
     })
 
     it('should render extent and count', () => {
